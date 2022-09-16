@@ -5,6 +5,7 @@ import nonebot
 import config
 
 if __name__ == '__main__':
+    print(987654321)
     nonebot.init(config)
     nonebot.load_builtin_plugins()
     nonebot.load_plugins(

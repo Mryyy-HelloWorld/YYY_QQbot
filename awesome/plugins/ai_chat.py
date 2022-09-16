@@ -31,6 +31,7 @@ EXPR_DONT_UNDERSTAND = (
 # 注册一个仅内部使用的命令，不需要 aliases
 @on_command('ai_chat')
 async def ai_chat(session: CommandSession):
+    print(1)
     # 获取可选参数，这里如果没有 message 参数，message 变量会是 None
     message = session.state.get('message')
 
@@ -48,12 +49,14 @@ async def ai_chat(session: CommandSession):
 
 @on_natural_language
 async def _(session: NLPSession):
+    print(2)
     # 以置信度 60.0 返回 ai_chat 命令
     # 确保任何消息都在且仅在其它自然语言处理器无法理解的时候使用 ai_chat 命令
     return IntentCommand(60.0, 'ai_chat', args={'message': session.msg_text})
 
 
 async def call_tencent_bot_api(session: CommandSession, text: Optional[str]) -> Optional[str]:
+    print(3)
     # 调用腾讯智能机器人的 API 获取回复
 
     if not text:
